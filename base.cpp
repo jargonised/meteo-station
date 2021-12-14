@@ -6,6 +6,15 @@
 #include "sensor.h"
 #include <iostream>
 
+CBase::CBase()
+{
+
+}
+
+void setSensor(CSensor* pSensor)
+{
+
+}
 
 void CBase::setTemperatureSensor(CTemperatureSensor *pTemperatureSensor)
 {
@@ -25,7 +34,11 @@ void CBase::readSensors()
 
 void CBase::displayMeasurements()
 {
-    std::cout << "Temperature: " << SM.measuredTemp << std::endl;
-    std::cout << "Humidity: " << SM.measuredHum << " %" << std::endl;
-
+    for(unsigned int i=0; i<numSensors; ++i)
+    {
+        CSensor* pSensor = Sensors[i];
+        std::cout << "Current " << pSensor->getName() << ": " << pSensor->getMeasurement() << ' ' << pSensor->getUnit()
+        << std::endl;
+    }
+    std::cout << std::endl;
 }

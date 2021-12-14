@@ -5,6 +5,29 @@
 #ifndef ZAD2_METEO_SENSOR_H
 #define ZAD2_METEO_SENSOR_H
 
+#include <string>
+using namespace std;
+
+class CSensor
+{
+public:
+    //methods
+    CSensor(float lowLimit, float highLimit);
+    float getMeasurement();
+
+    //fields
+    virtual string getName() = 0;
+    virtual string getUnit() = 0;
+
+private:
+    //methods
+    float makeMeasurement();
+
+    //fields
+    float lowLimit;
+    float highLimit;
+    float Measurement;
+};
 
 class CTemperatureSensor
 {

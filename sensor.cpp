@@ -6,6 +6,18 @@
 #include "rand.h"
 #include <iostream>
 
+CSensor::CSensor(float lowLimit, float highLimit) :
+        lowLimit(lowLimit),
+        highLimit(highLimit)
+{}
+
+float CSensor::getMeasurement()
+{
+    Measurement = makeMeasurement();
+
+    return Measurement;
+}
+
 CTemperatureSensor::CTemperatureSensor(float minTemp, float maxTemp)
 {
     minTemperature = minTemp;
@@ -30,7 +42,7 @@ CHumiditySensor::CHumiditySensor(float minHum, float maxHum)
     maxHumidity = maxHum;
 }
 
-void CHumiditySensor::makeMeasurement()
+float CHumiditySensor::makeMeasurement()
 {
     Humidity = getRandomNumber(minHumidity, maxHumidity);
 }
