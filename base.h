@@ -15,35 +15,22 @@ class CBase
 {
 public:
     //methods
-    void setTemperatureSensor(CTemperatureSensor *);
-    void setHumiditySensor(CHumiditySensor *);
-    void readSensors();
-    void displayMeasurements(); //Metoda pobierająca i wyświetlająca w konsoli dane z czujników
+    //void setTemperatureSensor(CTemperatureSensor *);
+    //void setHumiditySensor(CHumiditySensor *);
     CBase(); //Konstruktor
     void setSensor(CSensor* pSensor); //Metoda dodająca adresy kolejnych czujników
-
+    void displayMeasurements(); //Metoda pobierająca i wyświetlająca w konsoli dane z czujników
 
     //fields
-    CTemperatureSensor *pTemperatureSensor;
-    CHumiditySensor *pHumiditySensor;
-    //float temp;
-    //float hum;
-
-    struct SMeasurement
-    {
-        float measuredTemp;
-        float measuredHum;
-    } SM;
 
 private:
     //methods
 
     //fields
-    CSensor* Sensors[MAX_NUMBER_OF_SENSORS]; //Wektor przechowujący adresy obiektów reprezentujących czujniki
-    ???		//Zmienna określająca ilość dodanych adresów czujników
-
-
-
+    CSensor* Sensors[MAX_NUMBER_OF_SENSORS]; //Wektor przechowujący adresy
+    // obiektów
+    // reprezentujących czujniki
+    int numSensors;		//Zmienna określająca ilość dodanych adresów czujników
 };
 
 

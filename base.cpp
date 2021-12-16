@@ -8,28 +8,14 @@
 
 CBase::CBase()
 {
+    numSensors = 0;
 
 }
 
-void setSensor(CSensor* pSensor)
+void CBase::setSensor(CSensor *pSensor)
 {
-
-}
-
-void CBase::setTemperatureSensor(CTemperatureSensor *pTemperatureSensor)
-{
-    this->pTemperatureSensor = pTemperatureSensor; //this adres do obiektu na rzecz ktorego wykonujemy metode
-}
-
-void CBase::setHumiditySensor(CHumiditySensor *pHumiditySensor)
-{
-    this->pHumiditySensor = pHumiditySensor;
-}
-
-void CBase::readSensors()
-{
-    SM.measuredTemp = this->pTemperatureSensor->getTemperature();
-    SM.measuredHum = this->pHumiditySensor->getHumidity();
+    Sensors[numSensors] = pSensor;
+    numSensors++;
 }
 
 void CBase::displayMeasurements()

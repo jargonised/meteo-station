@@ -11,17 +11,27 @@ int main()
 {
     srand(time(NULL));
 
-	CTemperatureSensor TemperatureSensor(-50.0, 50.0);	//Utworzenie obiektu reprezentującego czujnik temperatury
-	CHumiditySensor HumiditySensor(0,100);			//Utworzenie obiektu reprezentującego czujnik wilgotności
+	CTemperatureSensor TemperatureSensor (-50.0, 50.0);	//Utworzenie obiektu reprezentującego
+	// czujnik
+	// temperatury
+	CHumiditySensor HumiditySensor(0, 100);			//Utworzenie obiektu reprezentującego czujnik wilgotności
+	CPressureSensor PressureSensor(800.0, 1500.0);
+	CWindSensor WindSensor(0.0, 200.0);
+	CInsolationSensor InsolationSensor(0.0, 1000.0);
+
 	CBase Base;										//Utworzenie obiektu reprezentującego stację bazową
 
 
-	Base.setTemperatureSensor(&TemperatureSensor);	//Przekazanie stacji bazowej adresu czujnika temperatury
-	Base.setHumiditySensor(&HumiditySensor);			//Przekazanie stacji bazowej adresu czujnika wilgotności
+	Base.setSensor(&TemperatureSensor);	//Przekazanie stacji bazowej adresu czujnika temperatury
+	Base.setSensor(&HumiditySensor);			//Przekazanie stacji bazowej adresu czujnika wilgotności
+	Base.setSensor(&PressureSensor);
+	Base.setSensor(&WindSensor);
+	Base.setSensor(&InsolationSensor);
+
 
 	while(true)							//Pętla nieskończona (przerwanie programu wymaga użycia klwiszy Ctrl+C)
 	{
-		Base.readSensors();							//Odczyt danych z czujników
+		//Base.readSensors();							//Odczyt danych z czujników
 		Base.displayMeasurements();				//Wyświetlenie danych w konsoli
 		sleep(3);										//3-sekundowa pauza
 	};

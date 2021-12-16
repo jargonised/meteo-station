@@ -15,7 +15,6 @@ public:
     CSensor(float lowLimit, float highLimit);
     float getMeasurement();
 
-    //fields
     virtual string getName() = 0;
     virtual string getUnit() = 0;
 
@@ -28,17 +27,17 @@ private:
     float highLimit;
     float Measurement;
 };
-
-class CTemperatureSensor
+/////////////////////
+class CTemperatureSensor: public CSensor
 {
 public:
     //methods
     CTemperatureSensor(float, float);
-    void makeMeasurement();
-    float getTemperature();
+
+    virtual string getName();
+    virtual string getUnit();
 
     //fields
-
 
 private:
     //methods
@@ -48,14 +47,15 @@ private:
     float maxTemperature;
     float Temperature;
 };
-
-class CHumiditySensor
+/////////////////////
+class CHumiditySensor: public CSensor
 {
 public:
     //methods
     CHumiditySensor(float, float);
-    void makeMeasurement();
-    float getHumidity();
+    virtual string getName();
+    virtual string getUnit();
+   // float getHumidity();
 
     //fields
 
@@ -67,7 +67,51 @@ private:
     float maxHumidity;
     float Humidity;
 };
+/////////////////////
+class CPressureSensor: public CSensor
+{
+public:
+    //methods
+    CPressureSensor(float, float);
+    virtual string getName();
+    virtual string getUnit();
 
+private:
+    float minPressure;
+    float maxPressure;
+    float Pressure;
+
+};
+/////////////////////
+class CWindSensor: public CSensor
+{
+public:
+    //methods
+    CWindSensor(float, float);
+    virtual string getName();
+    virtual string getUnit();
+
+private:
+    float minWindSpeed;
+    float maxWindSpeed;
+    float WindSpeed;
+
+};
+/////////////////////
+class CInsolationSensor: public CSensor
+{
+public:
+    //methods
+    CInsolationSensor(float, float);
+    virtual string getName();
+    virtual string getUnit();
+
+private:
+    float minInsolation;
+    float maxInsolation;
+    float Insolation;
+
+};
 
 
 #endif //ZAD2_METEO_SENSOR_H

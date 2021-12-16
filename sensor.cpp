@@ -6,10 +6,16 @@
 #include "rand.h"
 #include <iostream>
 
+// CSensor
 CSensor::CSensor(float lowLimit, float highLimit) :
         lowLimit(lowLimit),
         highLimit(highLimit)
 {}
+
+float CSensor::makeMeasurement()
+{
+    return getRandomNumber(lowLimit, highLimit);
+}
 
 float CSensor::getMeasurement()
 {
@@ -17,41 +23,93 @@ float CSensor::getMeasurement()
 
     return Measurement;
 }
-
-CTemperatureSensor::CTemperatureSensor(float minTemp, float maxTemp)
+/////////////////////
+// CTemperatureSensor
+CTemperatureSensor::CTemperatureSensor(float minTemp, float maxTemp):CSensor(minTemp, maxTemp)
 {
     minTemperature = minTemp;
     maxTemperature = maxTemp;
+    Temperature = CSensor::getMeasurement();
 }
 
-void CTemperatureSensor::makeMeasurement()
+string CTemperatureSensor::getName()
 {
-    Temperature = getRandomNumber(minTemperature, maxTemperature);
+    return "temperature";
 }
 
-float CTemperatureSensor ::getTemperature()
+string CTemperatureSensor::getUnit()
 {
-    makeMeasurement();
-
-    return Temperature;
+    return "stop. Celsjusza";
 }
-
-CHumiditySensor::CHumiditySensor(float minHum, float maxHum)
+/////////////////////
+// CHumiditySensor
+CHumiditySensor::CHumiditySensor(float minHum, float maxHum):CSensor(minHum, maxHum)
 {
     minHumidity = minHum;
     maxHumidity = maxHum;
+    Humidity = CSensor::getMeasurement();
 }
 
-float CHumiditySensor::makeMeasurement()
+string CHumiditySensor::getName()
 {
-    Humidity = getRandomNumber(minHumidity, maxHumidity);
+    return "humidity";
 }
 
-float CHumiditySensor::getHumidity()
+string CHumiditySensor::getUnit()
 {
-    makeMeasurement();
-
-    return Humidity;
+    return "%";
+}
+/////////////////////
+// CPressureSensor
+CPressureSensor::CPressureSensor(float minPress, float maxPress):CSensor(minPress, maxPress)
+{
+    minPressure = minPress;
+    maxPressure = maxPress;
+    Pressure = CSensor::getMeasurement();
 }
 
+string CPressureSensor::getName()
+{
+    return "atmospheric pressure";
+}
 
+string CPressureSensor::getUnit()
+{
+    return "hPa";
+}
+/////////////////////
+// CWindSensor
+CWindSensor::CWindSensor(float minWSpeed, float maxWSpeed):CSensor(minWSpeed, maxWSpeed)
+{
+    minWindSpeed = minWSpeed;
+    maxWindSpeed = maxWSpeed;
+    WindSpeed = CSensor::getMeasurement();
+}
+
+string CWindSensor::getName()
+{
+    return "wind speed";
+}
+
+string CWindSensor::getUnit()
+{
+    return "m/s";
+}
+/////////////////////
+// CInsolationSensor
+CInsolationSensor::CInsolationSensor(float minIns, float maxIns):CSensor(minIns, maxIns)
+{
+    minInsolation = minIns;
+    maxInsolation = maxIns;
+    Insolation = CSensor::getMeasurement();
+}
+
+string CInsolationSensor::getName()
+{
+    return "insolation";
+}
+
+string CInsolationSensor::getUnit()
+{
+    return "W/m^2";
+}
