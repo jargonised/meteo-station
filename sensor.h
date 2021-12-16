@@ -14,6 +14,7 @@ public:
     //methods
     CSensor(float lowLimit, float highLimit);
     float getMeasurement();
+    int checkLimits(float lowLimit, float lowDefault, float highLimit, float highDefault);
 
     virtual string getName() = 0;
     virtual string getUnit() = 0;

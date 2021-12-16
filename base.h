@@ -20,7 +20,6 @@ public:
     CBase(); //Konstruktor
     void setSensor(CSensor* pSensor); //Metoda dodająca adresy kolejnych czujników
     void displayMeasurements(); //Metoda pobierająca i wyświetlająca w konsoli dane z czujników
-
     //fields
 
 private:

@@ -11,7 +11,7 @@ int main()
 {
     srand(time(NULL));
 
-	CTemperatureSensor TemperatureSensor (-50.0, 50.0);	//Utworzenie obiektu reprezentującego
+	CTemperatureSensor TemperatureSensor (-100.0, 60.0);	//Utworzenie obiektu reprezentującego
 	// czujnik
 	// temperatury
 	CHumiditySensor HumiditySensor(0, 100);			//Utworzenie obiektu reprezentującego czujnik wilgotności
